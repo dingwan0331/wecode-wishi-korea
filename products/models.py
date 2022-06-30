@@ -3,7 +3,9 @@ from django.db import models
 from core.models import TimeStampModel
 
 class Category(models.Model):
-    name = models.CharField(max_length = 100)
+    name      = models.CharField(max_length = 100)
+    content   = models.CharField(max_length = 255, default = '')
+    image_url = models.CharField(max_length = 255, default = '')
 
     class Meta:
         db_table = 'categories'
@@ -36,7 +38,7 @@ class Product(TimeStampModel):
     class Meta:
         db_table = 'products'
 
-class ImgaeUrl(models.Model):
+class ImageUrl(models.Model):
     url     = models.CharField(max_length = 255, default = '')
     product = models.ForeignKey('Product', on_delete = models.CASCADE)
 
